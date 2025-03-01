@@ -2,4 +2,4 @@
 
 Google extension.
 
-Siva Dasaka. Git
+Siva Dasaka
