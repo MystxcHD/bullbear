@@ -1,3 +1,3 @@
 # Bullbear
 
-Google extension. Edit
+Google extension.
