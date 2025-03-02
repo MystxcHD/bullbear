@@ -6,73 +6,65 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #ff7e5f, #feb47b);
-    height: 100vh;
+    background: linear-gradient(to right, #00b4d8, #0077b6);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-.popup-container {
-    background-color: white;
-    border-radius: 15px;
-    padding: 30px;
-    width: 100%;
+.dashboard-container {
     max-width: 600px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-align: center;
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 1s ease-in-out;
 }
 
-h1.title {
+h1 {
+    font-size: 3rem;
     color: #333;
-    font-size: 2.5rem;
     margin-bottom: 20px;
     font-weight: 700;
+}
+
+.highlight {
+    color: #0077b6;
+    text-transform: uppercase;
 }
 
 p {
     color: #555;
     font-size: 1.2rem;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .btn {
-    padding: 12px 30px;
-    font-size: 1.1rem;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
     color: white;
-    background-color: #ff7e5f;
+    background-color: #00b4d8;
     border: none;
     border-radius: 30px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background-color: #d45d4c;
+    background-color: #009ec1;
     transform: scale(1.05);
-}
-
-.result, .url {
-    margin-top: 30px;
-    font-size: 1.1rem;
-    color: #333;
-}
-
-.result {
-    font-weight: bold;
-}
-
-.url {
-    color: #007bff;
-    word-wrap: break-word;
 }
 
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     100% {
         opacity: 1;

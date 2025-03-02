@@ -46,9 +46,7 @@ def save_as_pdf(text, filename="output.pdf"):
         print("No text extracted. PDF not generated.")
         return
 
-    # Check if the file exists and delete it if it does
-    delete_pdf(filename)
-
+    # Force the file to be overwritten without checking if it exists
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
@@ -59,7 +57,8 @@ def save_as_pdf(text, filename="output.pdf"):
     text = text.encode('latin-1', 'replace').decode('latin-1')
 
     pdf.multi_cell(0, 10, text)
-    pdf.output(filename)
+    pdf.output(filename, 'F')
+
     print(f"PDF saved as '{filename}'")
 
 pdf_file = "scraped_text.pdf"
@@ -80,7 +79,7 @@ def delete_pdf(file_path):
     else:
         print("File not found.")
 
-genai.configure(api_key="AIzaSyCJAz_auDcLjUmBkoW9tKRnhVTNnJAsoxI")
+genai.configure(api_key="AIzaSyDfkLoIZ3ENbwo9kXhIF6X-u-GZva-W410")
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 if __name__ == "__main__":
@@ -89,7 +88,7 @@ if __name__ == "__main__":
     extracted_text = scrape_article_text(url)
     
     if extracted_text:
-        save_as_pdf(extracted_text, pdf_file)  # Now it will overwrite if the file exists
+        save_as_pdf(extracted_text, pdf_file)  # Overwrites the file without checking if it's already deleted
     else:
         print("Failed to extract article text after multiple attempts.")
         
