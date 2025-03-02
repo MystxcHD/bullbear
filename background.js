@@ -2,7 +2,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "login") {
         const { username, password } = message;
 
-        
         if (username === "admin" && password === "password") {
             chrome.storage.sync.set({ loggedInUser: username }, () => {
                 sendResponse({ success: true, message: "Login successful!" });
@@ -11,7 +10,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({ success: false, message: "Invalid username or password." });
         }
 
-        return true; 
+        return true; // Ensure async response
     }
 
     if (message.action === "logout") {
@@ -19,6 +18,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({ success: true, message: "Logged out successfully." });
         });
 
-        return true;
+        return true; // Ensure async response
     }
 });

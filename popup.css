@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    width: 300px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.popup-container {
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    width: 80%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#login-status {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#prediction-result {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
