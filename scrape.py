@@ -73,7 +73,7 @@ def delete_pdf(file_path):
     else:
         print("File not found.")
 
-genai.configure(api_key="AIzaSyDHJ6b0-rxuBAQdwn0AiuFoSICgi9AFTls")
+genai.configure(api_key="AIzaSyCJAz_auDcLjUmBkoW9tKRnhVTNnJAsoxI")
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 if __name__ == "__main__":

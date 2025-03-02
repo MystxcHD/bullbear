@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "BullBear",
   "version": "1.0",
-  "permissions": ["storage", "activeTab", "tabs", "http://localhost:5000/"],
+  "permissions": ["storage", "activeTab", "tabs"],
   "background": {
     "service_worker": "background.js"
   },

@@ -1,13 +1,19 @@
-document.getElementById('analyzeButton').addEventListener('click', () => {
-    chrome.runtime.sendMessage({ action: 'analyzeArticle' }, (response) => {
-      document.getElementById('result').textContent = response || 'Error processing the article';
-    });
-  });
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("analyzeButton").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            if (tabs.length === 0) return;
 
-  document.addEventListener("DOMContentLoaded", () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      document.getElementById("url").textContent = tabs[0].url;
+            const url = tabs[0].url;
+
+            chrome.runtime.sendMessage({ action: "analyzeArticle", url: url }, (response) => {
+                console.log("Received response:", response);
+
+                if (response && response.result) {
+                    document.getElementById("result").textContent = response.result; // ✅ Display analysis
+                } else {
+                    document.getElementById("result").textContent = "Error processing the article.";
+                }
+            });
+        });
     });
-  });
-  
-  
+});
