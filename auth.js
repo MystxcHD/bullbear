@@ -26,21 +26,6 @@ const loginBtn = document.getElementById("loginBtn");
 const googleBtn = document.getElementById("googleBtn"); // Add Google button in HTML
 const message = document.getElementById("message");
 
-// loginBtn.addEventListener("click", () => {
-//     const email = emailInput.value;
-//     const password = passwordInput.value;
-
-//     signInWithEmailAndPassword(auth, email, password)
-//         .then((userCredential) => {
-//             message.innerText = "Login successful!";
-//             window.location.href = "dashboard.html";
-//         })
-//         .catch((error) => {
-//             message.innerText = error.message;
-//         });
-// });
-
-
 googleBtn.addEventListener("click", () => {
     console.log("Google Sign-In button clicked!");
     signInWithPopup(auth, provider)
@@ -49,6 +34,7 @@ googleBtn.addEventListener("click", () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;  // Google Access Token
       const user = result.user;  // Signed-in user info
+      console.log("We done bitch");
     })
     .catch((error) => {
       console.error("Error during sign-in:", error.message);
