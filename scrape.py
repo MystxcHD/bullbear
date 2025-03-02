@@ -77,7 +77,7 @@ genai.configure(api_key="AIzaSyDHJ6b0-rxuBAQdwn0AiuFoSICgi9AFTls")
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 if __name__ == "__main__":
-    url = "https://www.marketbeat.com/instant-alerts/alexander-baldwin-nysealex-downgraded-to-hold-rating-by-stocknewscom-2025-02-28/"
+    url = "https://www.marketbeat.com/stocks/NYSE/ALEX/?RegistrationCode=BackButton&utm_source=backbutton&utm_medium=backbutton"
     
     extracted_text = scrape_article_text(url)
     
@@ -87,7 +87,7 @@ if __name__ == "__main__":
         print("Failed to extract article text after multiple attempts.")
         
     pdf_text = read_pdf(pdf_file)
-    analysis = f"Based off the following news article:\n{pdf_text}\n\nDetermine the most mentioned publically traded company mentioned if any, and list the name and ticker ONLY and either a POSITIVE or NEGATIVE based off the sentimental analysis of the company. For example, if there was a negative article about Apple, the output would be APPLE (AAPL) - NEGATIVE"
+    analysis = f"Based off the following news article:\n{pdf_text}\n\nDetermine the most mentioned publically traded company mentioned if any, and list the name and ticker ONLY and either a POSITIVE or NEGATIVE based off the sentimental analysis of the company. For example, if there was a negative article about Apple, the output would be APPLE (AAPL) - NEGATIVE."
     response = model.generate_content(analysis)
     print(response.text)
     
