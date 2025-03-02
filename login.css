@@ -1,65 +1,41 @@
-/* Global Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    width: 350px; 
+    height: 450px; 
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.login-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-box {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
     text-align: center;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
+form {
+    width: 80%; 
+    max-width: 300px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.textbox {
-    margin-bottom: 20px;
-}
-
-.textbox input {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-    font-size: 16px;
+input {
+    width: 100%; 
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 15px 30px;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-    font-size: 16px;
 }
 
 button:hover {
     background-color: #0056b3;
-}
-
-.error-message {
-    color: red;
-    font-size: 14px;
 }
