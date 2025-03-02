@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log("Received response:", response);
 
                 if (response && response.result) {
-                    document.getElementById("result").textContent = response.result; // ✅ Display analysis
+                    document.getElementById("result").textContent = response.result;
                 } else {
-                    document.getElementById("result").textContent = "Error processing the article.";
+                    document.getElementById("result").textContent = "Error processing the article. Try again in a bit.";
                 }
             });
         });

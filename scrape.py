@@ -1,4 +1,3 @@
-# Scrapes and processes the website and returns sentimental analysis using GeminiAPI in the format 'COMPANY (TICKER) - NEGATIVE/POSITIVE'
 from url import receive_url
 import requests
 import time
@@ -47,6 +46,9 @@ def save_as_pdf(text, filename="output.pdf"):
         print("No text extracted. PDF not generated.")
         return
 
+    # Check if the file exists and delete it if it does
+    delete_pdf(filename)
+
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
@@ -87,12 +89,12 @@ if __name__ == "__main__":
     extracted_text = scrape_article_text(url)
     
     if extracted_text:
-        save_as_pdf(extracted_text, "scraped_text.pdf")
+        save_as_pdf(extracted_text, pdf_file)  # Now it will overwrite if the file exists
     else:
         print("Failed to extract article text after multiple attempts.")
         
     pdf_text = read_pdf(pdf_file)
-    analysis = f"Based off the following news article:\n{pdf_text}\n\nDetermine the most mentioned publically traded company mentioned if any, and list the name and ticker ONLY and either a POSITIVE or NEGATIVE based off the sentimental analysis of the company. For example, if there was a negative article about Apple, the output would be APPLE (AAPL) - NEGATIVE."
+    analysis = f"Based off the following news article:\n{pdf_text}\n\nDetermine the most mentioned publicly traded company mentioned if any, and list the name and ticker ONLY and either a POSITIVE or NEGATIVE based off the sentimental analysis of the company. For example, if there was a negative article about Apple, the output would be APPLE (AAPL) - NEGATIVE."
     response = model.generate_content(analysis)
     
     delete_pdf(pdf_file)

@@ -15,13 +15,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .then(response => response.json())
         .then(data => {
             console.log("Response received:", data);
-            sendResponse(data);  // ✅ Send actual result
+            sendResponse(data);
         })
         .catch(error => {
             console.error("Error:", error);
             sendResponse({ error: "Failed to process" });
         });
 
-        return true;  // ✅ Keep sendResponse valid for async call
+        return true;
     }
 });
