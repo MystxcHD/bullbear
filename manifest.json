@@ -1,15 +1,30 @@
 {
     "manifest_version": 3,
-    "name": "BullBear Login Extension",
+    "name": "BullBear",
     "version": "1.0",
-    "description": "Login to BullBear and predict stock movements",
-    "permissions": [
-        "activeTab"
-    ],
+    "description": "Analyze financial news and predict stock trends.",
+    "permissions": ["storage", "activeTab", "scripting"],
     "background": {
-        "service_worker": "background.js"
+      "service_worker": "background.js"
     },
     "action": {
-        "default_popup": "login.html"
-    }
-}
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "bullbear/icons/icon16.png",
+        "48": "bullbear/icons/icon48.png",
+        "128": "bullbear/icons/icon128.png"
+      }
+    },
+    "icons": {
+      "16": "bullbear/icons/icon16.png",
+      "48": "bullbear/icons/icon48.png",
+      "128": "bullbear/icons/icon128.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://*/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
