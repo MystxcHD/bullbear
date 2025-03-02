@@ -24,8 +24,13 @@ def scrape_article_text(url):
             article_body = soup.find("article") or soup.find("div", class_="article-body")
 
             if not article_body:
-                print("Error: Could not find the article content. Check the site's structure.")
-                return None
+                print("Article not found, extracting full page body.")
+                article_body = soup.find("body")
+
+            if article_body:
+                page_text = article_body.get_text(separator="\n", strip=True)
+            else:
+                print("Error: Could not extract any content.")
             
             article_text = article_body.get_text(separator="\n", strip=True)
 
@@ -89,6 +94,5 @@ if __name__ == "__main__":
     pdf_text = read_pdf(pdf_file)
     analysis = f"Based off the following news article:\n{pdf_text}\n\nDetermine the most mentioned publically traded company mentioned if any, and list the name and ticker ONLY and either a POSITIVE or NEGATIVE based off the sentimental analysis of the company. For example, if there was a negative article about Apple, the output would be APPLE (AAPL) - NEGATIVE."
     response = model.generate_content(analysis)
-    print(response.text)
     
     delete_pdf(pdf_file)
