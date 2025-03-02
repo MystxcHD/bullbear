@@ -1,5 +1,5 @@
 # Scrapes and processes the website and returns sentimental analysis using GeminiAPI in the format 'COMPANY (TICKER) - NEGATIVE/POSITIVE'
-
+from url import receive_url
 import requests
 import time
 from bs4 import BeautifulSoup
@@ -77,7 +77,7 @@ genai.configure(api_key="AIzaSyDHJ6b0-rxuBAQdwn0AiuFoSICgi9AFTls")
 model = genai.GenerativeModel('gemini-1.5-pro')
 
 if __name__ == "__main__":
-    url = "https://www.marketbeat.com/stocks/NYSE/ALEX/?RegistrationCode=BackButton&utm_source=backbutton&utm_medium=backbutton"
+    url = receive_url()
     
     extracted_text = scrape_article_text(url)
     

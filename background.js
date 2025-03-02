@@ -1,23 +1,24 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "login") {
-        const { username, password } = message;
+    if (message.action === "analyzeArticle") {
+        const url = message.url; // Retrieve URL sent from popup.js
 
-        if (username === "admin" && password === "password") {
-            chrome.storage.sync.set({ loggedInUser: username }, () => {
-                sendResponse({ success: true, message: "Login successful!" });
-            });
-        } else {
-            sendResponse({ success: false, message: "Invalid username or password." });
-        }
-
-        return true; // Ensure async response
-    }
-
-    if (message.action === "logout") {
-        chrome.storage.sync.remove("loggedInUser", () => {
-            sendResponse({ success: true, message: "Logged out successfully." });
+        fetch('http://localhost:5000/api/url', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ url: url }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("URL sent successfully:", data);
+            sendResponse(data); // Send the response back to popup.js
+        })
+        .catch(error => {
+            console.error("Error sending URL:", error);
+            sendResponse("Error processing the URL");
         });
 
-        return true; // Ensure async response
+        return true; // Indicates you want to send a response asynchronously
     }
 });
