@@ -21,14 +21,12 @@ def scrape_article_text(url):
             
             soup = BeautifulSoup(response.text, "html.parser")
 
-            # Find the main article body (modify class based on website structure)
             article_body = soup.find("article") or soup.find("div", class_="article-body")
 
             if not article_body:
                 print("Error: Could not find the article content. Check the site's structure.")
                 return None
             
-            # Extract only the clean text from the article
             article_text = article_body.get_text(separator="\n", strip=True)
 
             return article_text
